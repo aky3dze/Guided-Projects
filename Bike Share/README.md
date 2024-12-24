@@ -15,9 +15,11 @@ This project analyses
 
 
 ## Objectives
-- Identify key factors influencing employee attrition, such as job satisfaction, work environment, and compensation.
-- Provide actionable insights to help the HR department create targeted strategies for improving employee retention.
+- Identify key factors influencing ...
+- Provide actionable insights to help ...
 - [insert pic of email]
+![bike email 2](https://github.com/user-attachments/assets/fbe74b2f-f7c3-4f6e-a4bd-3ee3dc83a35f)
+
 
 
 ## Data Source and Overview
@@ -30,7 +32,23 @@ This data was obtained [Github](https://github.com/Gaelim/YT_bike_share/blob/mai
    	 1. Measures
    	 2. Calculated columns
    	 
-   	    
+## Exploratory Data Analysis
+use common table expressions
+
+**1.**
+````sql
+with cte_bike as (
+select * from bike_share_yr_0
+union all
+select * from [dbo].[bike_share_yr_1])
+
+
+select dteday, season, cte_bike.yr, mnth, hr, weekday, rider_type, riders, price, COGS, riders*price as revenue, 
+riders*price - COGS*riders as profit 
+from cte_bike
+left join cost_table 
+on cte_bike.yr = cost_table.yr
+````	    
 
 ## Data Cleaning and Preparation
 Data was efficiently cleaned and transformed with the PowerQuery editor in Power BI. Some of the applied steps include:
@@ -44,6 +62,7 @@ Data was efficiently cleaned and transformed with the PowerQuery editor in Power
 
 ## Data visualization
 The Power BI dashboard provides an interactive interface, allowing for filtering based on year.
+![bike](https://github.com/user-attachments/assets/e36ac378-984a-46a4-93d7-e1284aae5168)
 
 ## Findings
 
